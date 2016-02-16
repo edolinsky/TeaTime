@@ -10,7 +10,7 @@
 #   -   (coming soon) suggestions based on user-defined query messages
 
 import sys
-import mysql.connector
+import MySQLdb
 import requests
 import datetime
 import time
@@ -43,11 +43,11 @@ def trigger_ifttt_kettle(message):
 def get_random_tea():
 
     # instantiate connection
-    cnx = mysql.connector.connect(user='%s' % keys.get_mysql_user(),
-                                  passwd='%s' % keys.get_mysql_passwd(),
-                                  db='%s' % keys.get_mysql_db(),
-                                  host='%s' % keys.get_mysql_host(),
-                                  port='%s' % keys.get_mysql_port())
+    cnx = MySQLdb.connect(user='%s' % keys.get_mysql_user(),
+                          passwd='%s' % keys.get_mysql_passwd(),
+                          db='%s' % keys.get_mysql_db(),
+                          host='%s' % keys.get_mysql_host(),
+                          port=keys.get_mysql_port())
     query_result = {}       # dictionary of column name / value pairs
     cursor = cnx.cursor()   # instantiate cursor
 
@@ -142,8 +142,8 @@ if __name__ == '__main__':
                                                  datetime.datetime.utcnow() - datetime.timedelta(hours=event_span),
                                                  datetime.datetime.utcnow())
 
-        if not recent_events:
-            sys.stderr.out('WARNING: Events list empty\n')
+        #if not recent_events:
+           # sys.stderr.out('WARNING: Events list empty\n')
 
         # Iterate through events, comparing previous result to most recent result
         # If an event moves from 'in progress' to 'complete', trigger notification with message
