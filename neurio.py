@@ -62,6 +62,7 @@ def get_kettle_events(oauth_token, start_time, end_time):
         event_response = json.loads(event_req.text)
     except ValueError:
         print 'No JSON object could be decoded'
+        return events
 
     # If response is ok, iterate through JSON, grabbing event id and status pairs
     if event_req.status_code == requests.codes.ok:
@@ -69,8 +70,8 @@ def get_kettle_events(oauth_token, start_time, end_time):
             events.append({'event': event['id'], 'status': event['status']})
     # If response is not ok, do not iterate: print error and continue
     else:
-        sys.stderr.write('ERROR: %s\n%s\n'
-                        % (event_req.raise_for_status(), json.dumps(event_response, indent=4, sort_keys=True)))
+        print ('ERROR: %s\n%s\n'
+               % (event_req.raise_for_status(), json.dumps(event_response, indent=4, sort_keys=True)))
 
     return events
 
