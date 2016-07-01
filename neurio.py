@@ -86,7 +86,7 @@ class Neurio(object):
         return events
 
     def get_kettle_id(self):
-        appliance_url = 'https://api.neur.io/vi/appliances?locationId=%s' % self.location_id
+        appliance_url = 'https://api.neur.io/v1/appliances?locationId=%s' % self.location_id
         appliance_headers = {'Authorization': self.oauth_token, 'Content-Type': 'application/json'}
 
         try:
