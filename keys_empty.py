@@ -19,6 +19,10 @@ __mysql_db = ''
 __mysql_host = ''
 __mysql_port = ''
 
+# AWS SNS Key Strings
+__sns_region = ''
+__sns_topic = ''
+
 
 # Neurio get functions
 def get_neurio_oauth_client_id():
@@ -61,3 +65,12 @@ def get_mysql_host():
 
 def get_mysql_port():
     return __mysql_port
+
+
+# AWS SNS get functions
+def get_sns_region():
+    return __sns_region
+
+
+def get_sns_topic():
+    return __sns_topic
