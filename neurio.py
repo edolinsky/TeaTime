@@ -22,6 +22,9 @@ class Neurio(object):
         self.location_id = location_id
         self.kettle_id = kettle_id
 
+    def set_kettle_id(self, kettle_id):
+        self.kettle_id = kettle_id
+
     # get_oauth_token()
     # Grabs Neurio API Oauth2.0 token.
     def get_oauth_token(self):
@@ -85,7 +88,7 @@ class Neurio(object):
 
         return events
 
-    def get_kettle_id(self):
+    def get_kettle_id_from_api(self):
         appliance_url = 'https://api.neur.io/v1/appliances?locationId=%s' % self.location_id
         appliance_headers = {'Authorization': self.oauth_token, 'Content-Type': 'application/json'}
 
@@ -107,4 +110,6 @@ class Neurio(object):
             for appliance in appliance_response:
                 if appliance['name'] == 'electric_kettle':
                     self.kettle_id = appliance['id']
+
+
 

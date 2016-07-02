@@ -47,9 +47,19 @@ if __name__ == '__main__':
                    port=keys.get_mysql_port(),
                    host=keys.get_mysql_host())
 
-    # Get oauth token and kettle ID
+    # Get oauth token
     neurio_api.get_oauth_token()
-    neurio_api.get_kettle_id()
+
+    # Get Kettle Id
+    neurio_api.get_kettle_id_from_api()
+
+    # If request was unsuccessful, default to ID in keys.py
+    if neurio_api.kettle_id == '':
+        if keys.get_neurio_kettle_id() != '':
+            neurio_api.set_kettle_id(keys.get_neurio_kettle_id())
+        else:
+            print "No Available Kettle Id. Exiting."
+            exit()
 
     # initial condition for oauth expiry date
     oauth_expiry = datetime.datetime.utcnow() + datetime.timedelta(hours=oauth_window)

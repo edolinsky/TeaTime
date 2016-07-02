@@ -60,11 +60,11 @@ class TeaDb(object):
     def get_random_tea(self):
 
         # instantiate connection
-        cnx = MySQLdb.connect(self.user,
-                              self.passwd,
-                              self.db,
-                              self.host,
-                              self.port)
+        cnx = MySQLdb.connect(user=self.user,
+                              passwd=self.passwd,
+                              db=self.db,
+                              host=self.host,
+                              port=self.port)
 
         query_result = {}       # dictionary of column name / value pairs
         cursor = cnx.cursor()   # instantiate cursor
