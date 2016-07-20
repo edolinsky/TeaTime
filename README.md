@@ -1,7 +1,7 @@
 # TeaTime
 
-Integrates Neurio Intelligent Home Monitor, MySQL database and IFTTT/SNS to provide:
-1. notification of a kettle finishing its boiling cycle
+#### Integrates Neurio Intelligent Home Monitor, MySQL database and IFTTT/SNS to provide:  
+1. notification of a kettle finishing its boiling cycle  
 2. random suggestion of which tea to drink from available teas, along with brewing instructions and link to retailer, triggered by notification above
 
 ## Required
